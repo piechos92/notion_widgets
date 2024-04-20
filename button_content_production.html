@@ -7,6 +7,9 @@
             --default-color: #133A4E;
             --progress-color: #2E86C1;
         }
+        .btn-container {
+            margin-top: 20px; /* Adjust this value to align with the 'Pipeline' text box */
+        }
         button {
             background-color: var(--default-color);
             color: white;
@@ -18,12 +21,10 @@
             position: relative;
             outline: none;
             font-size: 18px; /* Adding font size to ensure consistency */
+            box-shadow: 0px 4px 0px var(--default-color);
         }
         button:hover {
             background-color: var(--default-color); /* No color change on hover */
-        }
-        button.threeD {
-            box-shadow: 0px 4px 0px var(--default-color);
         }
         button.threeD:active {
             box-shadow: 0 0;
@@ -39,7 +40,9 @@
     </style>
 </head>
 <body>
-    <button class="btn large threeD" type="button" onclick="navigate(this)">Create Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
+    <div class="btn-container">
+        <button class="btn large threeD" type="button" onclick="navigate(this)">Create Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
+    </div>
     <script>
         function navigate(button) {
             // Show spinner icon
