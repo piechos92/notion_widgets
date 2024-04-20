@@ -37,6 +37,7 @@
       font: inherit;
       cursor: pointer;
       outline: inherit;
+      position: relative;
     }
 
     i {
@@ -103,16 +104,26 @@
       padding: 15px 60px;
       font-size: 18px;
     }
+
+    .spinner {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none; /* Initially hidden */
+    }
   </style>
 
 </head>
 
 <body>
 
-  <button class="btn large my-color rounded threeD" type="button" onclick="navigate(this)"> <i class="fa-regular fa-star"></i> Create Drafts </button>
+  <button class="btn large my-color rounded threeD" type="button" onclick="navigate(this)"> <i class="fa-regular fa-star"></i> Create Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
 
   <script>
     function navigate(button) {
+      // Show spinner icon
+      button.querySelector('.spinner').style.display = 'inline-block';
       button.classList.remove('my-color');
       button.classList.remove('threeD');
       button.classList.add('green-color');
@@ -124,6 +135,8 @@
           // Revert back to original color
           button.classList.remove('green-color');
           button.classList.add('my-color', 'threeD');
+          // Hide spinner icon
+          button.querySelector('.spinner').style.display = 'none';
         })
         .catch(error => {
           // Handle error if needed
@@ -131,6 +144,8 @@
           // Revert back to original color in case of error
           button.classList.remove('green-color');
           button.classList.add('my-color', 'threeD');
+          // Hide spinner icon
+          button.querySelector('.spinner').style.display = 'none';
         });
     }
   </script>
