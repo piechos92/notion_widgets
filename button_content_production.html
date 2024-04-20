@@ -68,6 +68,23 @@
       background-color: var(--my-color-accent);
     }
 
+    .green-color {
+      background-color: var(--green);
+    }
+
+    .green-color:hover {
+      background-color: var(--green-accent);
+    }
+
+    .green-color.threeD {
+      box-shadow: 0px 4px 0px var(--green-accent);
+    }
+
+    .green-color.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--green-accent);
+    }
+
     .rounded {
       border-radius: 20px;
     }
@@ -92,18 +109,28 @@
 
 <body>
 
-  <button class="btn large my-color rounded threeD" type="button" onclick="navigate()"> <i class="fa-regular fa-star"></i> Create drafts</button>
+  <button class="btn large my-color rounded threeD" type="button" onclick="navigate(this)"> <i class="fa-regular fa-star"></i> My Button</button>
 
   <script>
-    function navigate() {
-      fetch("https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1")
+    function navigate(button) {
+      button.classList.remove('my-color');
+      button.classList.remove('threeD');
+      button.classList.add('green-color');
+
+      fetch("https://example.com")
         .then(response => {
           // Handle response if needed
           console.log("HTTP request sent successfully.");
+          // Revert back to original color
+          button.classList.remove('green-color');
+          button.classList.add('my-color', 'threeD');
         })
         .catch(error => {
           // Handle error if needed
           console.error("Error sending HTTP request:", error);
+          // Revert back to original color in case of error
+          button.classList.remove('green-color');
+          button.classList.add('my-color', 'threeD');
         });
     }
   </script>
