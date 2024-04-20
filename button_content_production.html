@@ -7,26 +7,8 @@
 
   <style>
     :root {
-      --my-color: #34495e;
-      --my-color-accent: #2c3e50;
-      --black: #3c3c3c;
-      --black-accent: #2d2d2d;
-      --blue: #809bce;
-      --blue-accent: #5c6f94;
-      --purple: #8a508f;
-      --purple-accent: #5d3661;
-      --mint: #b8e0d4;
-      --mint-accent: #8ba89f;
-      --pink: #eac4d5;
-      --pink-accent: #b495a3;
-      --green: #74a892;
-      --green-accent: #5e8675;
-      --red: #d74a49;
-      --red-accent: #b53f3f;
-      --orange: #d35400;
-      --orange-accent: #9e4102;
-      --yellow: #f1c40f;
-      --yellow-accent: #bd9a0c;
+      --default-color: #133A4E;
+      --progress-color: #2E86C1;
     }
 
     button {
@@ -52,57 +34,25 @@
       margin: 10px;
     }
 
-    .my-color {
-      background-color: var(--my-color);
+    .default-color {
+      background-color: var(--default-color);
     }
 
-    .my-color:hover {
-      background-color: var(--my-color-accent);
+    .default-color:hover {
+      background-color: var(--default-color); /* No change on hover */
     }
 
-    .my-color.threeD {
-      box-shadow: 0px 4px 0px var(--my-color-accent);
+    .default-color.threeD {
+      box-shadow: 0px 4px 0px var(--default-color); /* No change on hover */
     }
 
-    .my-color.threeD:active {
+    .default-color.threeD:active {
       box-shadow: 0 0;
-      background-color: var(--my-color-accent);
-    }
-
-    .green-color {
-      background-color: var(--green);
-    }
-
-    .green-color:hover {
-      background-color: var(--green-accent);
-    }
-
-    .green-color.threeD {
-      box-shadow: 0px 4px 0px var(--green-accent);
-    }
-
-    .green-color.threeD:active {
-      box-shadow: 0 0;
-      background-color: var(--green-accent);
+      background-color: var(--progress-color); /* Change on click */
     }
 
     .rounded {
       border-radius: 20px;
-    }
-
-    .small {
-      padding: 5px 20px;
-      font-size: 10px;
-    }
-
-    .mid {
-      padding: 10px 40px;
-      font-size: 12px;
-    }
-
-    .large {
-      padding: 15px 60px;
-      font-size: 18px;
     }
 
     .spinner {
@@ -118,23 +68,23 @@
 
 <body>
 
-  <button class="btn large my-color rounded threeD" type="button" onclick="navigate(this)"> <i class="fa-regular fa-star"></i> Create Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
+  <button class="btn large default-color rounded threeD" type="button" onclick="navigate(this)">Create Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
 
   <script>
     function navigate(button) {
       // Show spinner icon
       button.querySelector('.spinner').style.display = 'inline-block';
-      button.classList.remove('my-color');
+      button.classList.remove('default-color');
       button.classList.remove('threeD');
-      button.classList.add('green-color');
+      button.classList.add('progress-color');
 
       fetch("https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1")
         .then(response => {
           // Handle response if needed
           console.log("HTTP request sent successfully.");
           // Revert back to original color
-          button.classList.remove('green-color');
-          button.classList.add('my-color', 'threeD');
+          button.classList.remove('progress-color');
+          button.classList.add('default-color', 'threeD');
           // Hide spinner icon
           button.querySelector('.spinner').style.display = 'none';
         })
@@ -142,8 +92,8 @@
           // Handle error if needed
           console.error("Error sending HTTP request:", error);
           // Revert back to original color in case of error
-          button.classList.remove('green-color');
-          button.classList.add('my-color', 'threeD');
+          button.classList.remove('progress-color');
+          button.classList.add('default-color', 'threeD');
           // Hide spinner icon
           button.querySelector('.spinner').style.display = 'none';
         });
