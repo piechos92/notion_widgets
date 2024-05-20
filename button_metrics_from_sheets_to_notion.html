@@ -47,10 +47,20 @@
 </head>
 <body>
     <div class="btn-container">
-        <button class="btn large" type="button" onclick="collectMetrics(this)">Collect Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
-        <button class="btn large" type="button" onclick="navigate(this, 'https://hook.eu2.make.com/ggddspq0xxyk1tkm97mnasldp9cqh2iy')">Recalculate Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
+        <button class="btn large" type="button" onclick="confirmAction('collectMetrics', this)">Collect Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
+        <button class="btn large" type="button" onclick="confirmAction('navigate', this, 'https://hook.eu2.make.com/ggddspq0xxyk1tkm97mnasldp9cqh2iy')">Recalculate Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
     </div>
     <script>
+        function confirmAction(action, button, endpoint = null) {
+            if (confirm("Are you sure you want to proceed?")) {
+                if (action === 'collectMetrics') {
+                    collectMetrics(button);
+                } else if (action === 'navigate') {
+                    navigate(button, endpoint);
+                }
+            }
+        }
+
         function navigate(button, endpoint) {
             var spinner = button.querySelector('.spinner');
             spinner.style.display = 'inline-block';
