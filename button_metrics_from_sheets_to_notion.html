@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --default-color: #133A4E;
+            --progress-color: #2E86C1;
+        }
+        .btn-container {
+            margin-top: 23px; /* Adjust this value to align with the 'Pipeline' text box */
+        }
+        button {
+            background-color: var(--default-color);
+            color: white;
+            border: none;
+            padding: 15px 60px;
+            font-family: 'Manrope', sans-serif;
+            cursor: pointer;
+            border-radius: 20px;
+            position: relative;
+            outline: none;
+            font-size: 18px;
+            box-shadow: 0px 4px 0px var(--default-color);
+        }
+        button:hover {
+            background-color: #11536C; /* Slightly darker on hover for visual feedback */
+        }
+        button:active {
+            box-shadow: 0 0;
+            background-color: var(--progress-color);
+        }
+        .spinner {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-container">
+        <button class="btn large" type="button" onclick="navigate(this, 'https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1')">Generate Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
+        <button class="btn large" type="button" onclick="navigate(this, 'https://hook.eu2.make.com/ggddspq0xxyk1tkm97mnasldp9cqh2iy')">Recalculate Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
+    </div>
+    <script>
+        function navigate(button, endpoint) {
+            var spinner = button.querySelector('.spinner');
+            spinner.style.display = 'inline-block';
+            button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--progress-color');
 
+            fetch(endpoint)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log("HTTP request sent successfully.");
+                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+                spinner.style.display = 'none';
+            })
+            .catch(error => {
+                console.error("Error sending HTTP request:", error);
+                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+                spinner.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
