@@ -9,13 +9,13 @@
             --progress-color: #2E86C1;
         }
         .btn-container {
-            margin-top: 10px; /* Reduced from 23px to 10px to decrease top space */
+            margin-top: 10px;
         }
         button {
             background-color: var(--default-color);
             color: white;
             border: none;
-            padding: 10px 40px; /* Smaller padding for smaller button size */
+            padding: 10px 40px;
             font-family: 'Manrope', sans-serif;
             cursor: pointer;
             border-radius: 15px;
@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="btn-container">
-        <button class="btn large" type="button" onclick="navigate(this, 'https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1')">Generate Drafts <i class="fas fa-spinner fa-spin spinner"></i></button>
+        <button class="btn large" type="button" onclick="collectMetrics(this)">Collect Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
         <button class="btn large" type="button" onclick="navigate(this, 'https://hook.eu2.make.com/ggddspq0xxyk1tkm97mnasldp9cqh2iy')">Recalculate Metrics <i class="fas fa-spinner fa-spin spinner"></i></button>
     </div>
     <script>
@@ -65,3 +65,55 @@
                 button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
                 spinner.style.display = 'none';
             })
+            .catch(error => {
+                console.error("Error sending HTTP request:", error);
+                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+                spinner.style.display = 'none';
+            });
+        }
+
+        function collectMetrics(button) {
+            var spinner = button.querySelector('.spinner');
+            spinner.style.display = 'inline-block';
+            button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--progress-color');
+
+            const requests = [
+                fetch("https://snm6s84rr1.execute-api.us-east-1.amazonaws.com/Prod/aaa_metrics_collection", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ period: "current_week" })
+                }),
+                fetch("https://snm6s84rr1.execute-api.us-east-1.amazonaws.com/Prod/aaa_metrics_collection", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ period: "current_month" })
+                })
+            ];
+
+            Promise.all(requests)
+            .then(responses => {
+                return Promise.all(responses.map(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }));
+            })
+            .then(data => {
+                console.log("All metrics collected:", data);
+                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+                spinner.style.display = 'none';
+            })
+            .catch(error => {
+                console.error("Error collecting metrics:", error);
+                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+                spinner.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
