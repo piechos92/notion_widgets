@@ -9,7 +9,7 @@
             --progress-color: #2E86C1;
         }
         .btn-container {
-            margin-top: 23px; /* Adjust this value to align with the 'Pipeline' text box */
+            margin-top: 10px; /* Reduced from 23px to 10px to decrease top space */
         }
         button {
             background-color: var(--default-color);
@@ -18,19 +18,19 @@
             padding: 10px 40px; /* Smaller padding for smaller button size */
             font-family: 'Manrope', sans-serif;
             cursor: pointer;
-            border-radius: 15px; /* Adjusted for proportionality */
+            border-radius: 15px;
             position: relative;
             outline: none;
-            font-size: 16px; /* Smaller font size */
-            font-weight: bold; /* Making text bold */
+            font-size: 16px;
+            font-weight: bold;
             box-shadow: 0px 3px 0px var(--default-color);
-            margin-right: 10px; /* Space between buttons */
+            margin-right: 10px;
         }
         button:last-child {
-            margin-right: 0; /* No margin on the right for the last button */
+            margin-right: 0;
         }
         button:hover {
-            background-color: #11536C; /* Slightly darker on hover for visual feedback */
+            background-color: #11536C;
         }
         button:active {
             box-shadow: 0 0;
@@ -65,12 +65,3 @@
                 button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
                 spinner.style.display = 'none';
             })
-            .catch(error => {
-                console.error("Error sending HTTP request:", error);
-                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
-                spinner.style.display = 'none';
-            });
-        }
-    </script>
-</body>
-</html>
