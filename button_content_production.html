@@ -8,7 +8,7 @@
             --progress-color: #2E86C1;
         }
         .btn-container {
-            margin-top: 23px; /* Adjust this value to align with the 'Pipeline' text box */
+            margin-top: 23px;
         }
         button {
             background-color: var(--default-color);
@@ -20,11 +20,11 @@
             border-radius: 20px;
             position: relative;
             outline: none;
-            font-size: 18px; /* Adding font size to ensure consistency */
+            font-size: 18px;
             box-shadow: 0px 4px 0px var(--default-color);
         }
         button:hover {
-            background-color: var(--default-color); /* No color change on hover */
+            background-color: var(--default-color);
         }
         button.threeD:active {
             box-shadow: 0 0;
@@ -45,32 +45,34 @@
     </div>
     <script>
         function navigate(button) {
-            // Show spinner icon
             var spinner = button.querySelector('.spinner');
             spinner.style.display = 'inline-block';
             button.classList.remove('threeD');
             button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--progress-color');
 
-            fetch("https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log("HTTP request sent successfully.");
-                // Revert back to original color
-                button.classList.add('threeD');
-                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
-                // Hide spinner icon
-                spinner.style.display = 'none';
+            Promise.all([
+                fetch("https://hook.eu2.make.com/7h4buhrkulq0dmnx6sogo7j2jgehisb1"),
+                fetch("https://hook.eu2.make.com/9osy58twyot43i64r4iv9xvyfgh3nqmg")
+            ])
+            .then(responses => Promise.all(responses.map(r => {
+                if (!r.ok) throw new Error('Network response was not ok');
+                return r.text(); // or r.json() if you expect JSON responses
+            })))
+            .then(data => {
+                console.log("HTTP requests sent successfully.", data);
+                updateButtonState(button, true);
             })
             .catch(error => {
-                console.error("Error sending HTTP request:", error);
-                // Revert back to original color in case of error
-                button.classList.add('threeD');
-                button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
-                // Hide spinner icon
-                spinner.style.display = 'none';
+                console.error("Error sending HTTP requests:", error);
+                updateButtonState(button, false);
             });
+        }
+
+        function updateButtonState(button, success) {
+            button.classList.add('threeD');
+            button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--default-color');
+            var spinner = button.querySelector('.spinner');
+            spinner.style.display = 'none';
         }
     </script>
 </body>
