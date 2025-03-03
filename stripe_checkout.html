@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        .checkout-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        iframe {
-            width: 100%;
-            max-width: 600px;
-            height: 800px;
-            border: none;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Buy Button</title>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
-    <div class="checkout-container">
-        <iframe src="https://buy.stripe.com/test_7sIeXM6OB1v0daw000"></iframe>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <stripe-buy-button
+          buy-button-id="buy_btn_1QyO5L09dDuj91b9egCwLltc"
+          publishable-key="pk_test_51QkALt09dDuj91b98s909uSJl56q9mpzWbSbxkNMyIsdIAwfLVQcSNuZXEWU0dbnPNb4qqcLSIX6pHjPIuYLqnZp00GqjfBzcm">
+        </stripe-buy-button>
     </div>
 </body>
 </html>
