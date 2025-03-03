@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include Font Awesome for the spinner icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --default-color: #133A4E;
+            --progress-color: #2E86C1;
+        }
+        .btn-container {
+            margin-top: 23px;
+        }
+        button {
+            background-color: var(--default-color);
+            color: white;
+            border: none;
+            padding: 15px 60px;
+            font-family: 'Manrope', sans-serif;
+            cursor: pointer;
+            border-radius: 20px;
+            position: relative;
+            outline: none;
+            font-size: 18px;
+            box-shadow: 0px 4px 0px var(--default-color);
+        }
+        button:hover {
+            background-color: var(--default-color);
+        }
+        button.threeD:active {
+            box-shadow: 0 0;
+            background-color: var(--progress-color);
+        }
+        .spinner {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-container">
+        <button class="btn large threeD" type="button" onclick="redirectToStripe(this)">
+            Pay Now
+            <i class="fas fa-spinner fa-spin spinner"></i>
+        </button>
+    </div>
+    <script>
+        function redirectToStripe(button) {
+            // Show spinner and temporarily change the button color
+            var spinner = button.querySelector('.spinner');
+            spinner.style.display = 'inline-block';
+            button.classList.remove('threeD');
+            button.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--progress-color');
+
+            // Redirect to Stripe
+            window.location.href = "https://buy.stripe.com/test_7sIeXM6OB1v0daw000";
+        }
+    </script>
+</body>
+</html>
