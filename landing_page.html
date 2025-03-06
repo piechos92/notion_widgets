@@ -2,190 +2,371 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Execution Mastery with Matt</title>
+  <!-- Google Fonts for Montserrat (for headings) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset and base styles */
-    body {
+    /* Color Palette */
+    :root {
+      --primary-orange: #F97316;
+      --secondary-green: #16A34A;
+      --light-gray: #E5E7EB;
+      --dark-blue: #1E3A8A;
+      --dark-bg: #191919;
+    }
+
+    /* Global Styles */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: Calibri, sans-serif;
-      background-color: #E5E7EB;
-      color: #191919;
+      line-height: 1.6;
+      color: var(--dark-bg);
     }
-    header {
-      background-color: #1E3A8A;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      font-family: Montserrat, sans-serif;
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
     }
-    .hero {
-      text-align: center;
-      padding: 40px 20px;
-      background-color: #16A34A;
-      color: #fff;
+    .accent, .branding {
+      font-family: Bahnschrift, sans-serif;
     }
-    .hero h2 {
+    .cta {
       font-family: "Century Gothic", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 0;
+    }
+    
+    /* Hero Section */
+    header.hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header.hero h1 {
+      font-size: 2.5rem;
+      font-family: Bahnschrift, sans-serif;
+      text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .hero p {
-      font-family: Calibri, sans-serif;
+    header.hero p.tagline {
+      font-size: 1.25rem;
       margin: 10px 0;
+      color: var(--dark-blue);
     }
-    /* Carousel Styles */
-    .carousel-container {
-      position: relative;
-      width: 80%;
-      margin: 40px auto;
+    header.hero p.description {
+      font-size: 1rem;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    header.hero .cta-btn {
+      background-color: var(--primary-orange);
+      border: none;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    header.hero .cta-btn:hover {
+      background-color: #e0660e;
+    }
+    
+    /* Key Benefits Carousel Section */
+    section.benefits {
+      padding: 40px 0;
+      background: #fff;
+    }
+    section.benefits h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .carousel {
       overflow: hidden;
+      position: relative;
+      margin: auto;
+      max-width: 1000px;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      padding: 20px;
     }
-    .carousel-track {
+    .carousel-inner {
       display: flex;
       transition: transform 0.5s ease;
     }
     .carousel-item {
-      min-width: 200px;
-      margin: 0 10px;
-      background-color: #fff;
-      padding: 20px;
+      min-width: 250px;
+      flex: 0 0 250px;
+      margin-right: 20px;
+      background: var(--light-gray);
+      border-radius: 5px;
+      padding: 15px;
       text-align: center;
-      border: 2px solid #F97316;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      flex-shrink: 0;
-      cursor: pointer;
-      font-family: Bahnschrift, sans-serif;
     }
-    /* Scale and opacity for non-active items */
-    .carousel-item:not(.active) {
-      transform: scale(0.8);
-      opacity: 0.7;
+    .carousel-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
     }
-    .carousel-item.active,
-    .carousel-item:hover {
-      transform: scale(1);
-      opacity: 1;
+    .carousel-item p {
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
-    .carousel-nav {
+    
+    /* Visual Demonstration Section */
+    section.visual {
+      background: var(--light-gray);
+      padding: 60px 20px;
       text-align: center;
-      margin-top: 20px;
     }
-    .carousel-button {
-      padding: 10px 20px;
-      background-color: #F97316;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      margin: 0 10px;
-      font-family: Bahnschrift, sans-serif;
+    section.visual h2 {
+      margin-bottom: 10px;
     }
-    /* Offers Section */
-    .offers {
+    section.visual p {
+      margin-bottom: 30px;
+      font-size: 1rem;
+      color: var(--dark-blue);
+    }
+    .video-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .video-container iframe,
+    .video-container video {
+      width: 100%;
+      border-radius: 5px;
+    }
+    
+    /* Pricing Section */
+    section.pricing {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    section.pricing h2 {
+      margin-bottom: 40px;
+    }
+    .pricing-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin: 40px;
+      gap: 20px;
     }
-    .offer {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      margin: 10px;
+    .pricing-card {
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
       padding: 20px;
-      width: 200px;
-      text-align: center;
-      font-family: Calibri, sans-serif;
+      width: 280px;
+      transition: transform 0.3s ease;
     }
-    .offer img {
-      width: 100%;
-      height: auto;
+    .pricing-card:hover {
+      transform: scale(1.03);
+    }
+    .pricing-card.recommended {
+      border: 2px solid var(--secondary-green);
+    }
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .pricing-card p.price {
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+    .pricing-card ul {
+      list-style: none;
+      margin: 15px 0;
+      padding: 0;
+    }
+    .pricing-card ul li {
+      margin: 8px 0;
+      font-size: 0.9rem;
+    }
+    .pricing-card .plan-btn {
+      background-color: var(--primary-orange);
+      border: none;
+      padding: 10px 20px;
+      font-family: "Century Gothic", sans-serif;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .pricing-card .plan-btn:hover {
+      background-color: #e0660e;
+    }
+    
+    /* Social Proof / Engagement Section */
+    section.social {
+      background: var(--dark-bg);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    section.social h2 {
+      margin-bottom: 20px;
+    }
+    .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: var(--primary-orange);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .carousel-inner {
+        flex-wrap: nowrap;
+      }
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>EXECUTION MASTERY WITH MATT</h1>
+  <!-- Hero Section -->
+  <header class="hero container">
+    <h1 class="branding">EXECUTION MASTERY WITH MATT</h1>
+    <p class="tagline">Stay Ahead. Learn Smarter. Better.</p>
+    <p class="description">Break information overload. Absorb, retain, and apply knowledge effortlessly with our cutting-edge AI-powered system.</p>
+    <button class="cta-btn cta">Get the System</button>
   </header>
-  <section class="hero">
-    <h2>Get the System</h2>
-    <p>Stay Ahead. Learn Smarter. Better.</p>
-    <p>Break information overload. Absorb, retain, and apply knowledge effortlessly with our cutting-edge AI-powered system.</p>
-  </section>
-
-  <!-- Carousel Section for Benefits -->
-  <section class="carousel-container">
-    <div class="carousel-track">
-      <div class="carousel-item active" data-index="0">SMART FOCUS, MAXIMUM CLARITY</div>
-      <div class="carousel-item" data-index="1">ORGANIZED DATA, ZERO CLUTTER</div>
-      <div class="carousel-item" data-index="2">EFFECTIVE NOTES, BETTER RETENTION</div>
-      <div class="carousel-item" data-index="3">LEARNING ON THE GO, EFFORTLESSLY</div>
-      <div class="carousel-item" data-index="4">QUICK SUMMARIES, EASY EXPLANATIONS</div>
-    </div>
-    <div class="carousel-nav">
-      <button class="carousel-button" id="prev">Prev</button>
-      <button class="carousel-button" id="next">Next</button>
-    </div>
-  </section>
-
-  <!-- Offers Section -->
-  <section class="offers">
-    <div class="offer">
-      <img src="https://via.placeholder.com/200x150" alt="Offer 1">
-      <h3>Offer 1</h3>
-      <p>Placeholder description for offer 1.</p>
-    </div>
-    <div class="offer">
-      <img src="https://via.placeholder.com/200x150" alt="Offer 2">
-      <h3>Offer 2</h3>
-      <p>Placeholder description for offer 2.</p>
-    </div>
-    <div class="offer">
-      <img src="https://via.placeholder.com/200x150" alt="Offer 3">
-      <h3>Offer 3</h3>
-      <p>Placeholder description for offer 3.</p>
+  
+  <!-- Key Benefits Section -->
+  <section class="benefits container">
+    <h2>Key Benefits</h2>
+    <div class="carousel" id="benefits-carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <!-- Icon or graphic can be inserted here -->
+          <h3>Smart Focus, Maximum Clarity</h3>
+          <p>Stay organized and absorb only what truly matters.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Organized Data, Zero Clutter</h3>
+          <p>Keep everything you need to know in one structured place.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Effective Notes, Better Retention</h3>
+          <p>Take smart notes and remember more easily than ever.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Learning On the Go, Effortlessly</h3>
+          <p>Remain active and stay informed. Learn whenever and wherever you want. All you need is your phone and headphones.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Quick Summaries, Easy Explanations</h3>
+          <p>Use a personal AI agent who summarizes key insights in seconds and explains them in simple language – just like you’re a kid.</p>
+        </div>
+      </div>
     </div>
   </section>
-
+  
+  <!-- Visual Demonstration Section -->
+  <section class="visual">
+    <div class="container">
+      <h2>SEE IT IN ACTION</h2>
+      <p>From Idea to Reality: Discover The Vision that started it all.</p>
+      <div class="video-container">
+        <!-- Replace the src with your video or interactive preview -->
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Video demonstration" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pricing Section -->
+  <section class="pricing container">
+    <h2>Choose Your Plan</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <p class="price">$9/mo</p>
+        <ul>
+          <li>Access to core features</li>
+          <li>Standard support</li>
+          <li>Community access</li>
+        </ul>
+        <button class="plan-btn">Select Plan</button>
+      </div>
+      <div class="pricing-card recommended">
+        <h3>Pro</h3>
+        <p class="price">$19/mo</p>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="plan-btn">Select Plan</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="price">$29/mo</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Exclusive webinars</li>
+          <li>1-on-1 coaching</li>
+        </ul>
+        <button class="plan-btn">Select Plan</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Social Proof / Engagement Section -->
+  <section class="social">
+    <div class="container">
+      <h2>Follow for More Insights</h2>
+      <div class="social-links">
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- JavaScript for Benefits Carousel -->
   <script>
-    // Carousel functionality
-    const track = document.querySelector('.carousel-track');
-    const items = Array.from(document.querySelectorAll('.carousel-item'));
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    let currentIndex = 0;
-    
-    // Update the carousel: set the active item and reposition the track
-    function updateCarousel() {
-      // Set active class on current item
-      items.forEach((item, index) => {
-        item.classList.toggle('active', index === currentIndex);
+    (function() {
+      const carousel = document.getElementById('benefits-carousel');
+      const inner = carousel.querySelector('.carousel-inner');
+      const items = carousel.querySelectorAll('.carousel-item');
+      const itemWidth = items[0].offsetWidth + 20; // item width plus margin-right
+      const totalItems = items.length;
+      let currentIndex = 0;
+      let intervalId;
+
+      // Move to next slide (with wrap-around)
+      function nextSlide() {
+        currentIndex++;
+        if(currentIndex > totalItems - Math.floor(carousel.offsetWidth / itemWidth)) {
+          currentIndex = 0;
+        }
+        inner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      }
+
+      carousel.addEventListener('mouseenter', () => {
+        intervalId = setInterval(nextSlide, 2000);
       });
-      // Calculate offset to center the current item
-      const itemWidth = items[0].getBoundingClientRect().width + 20; // includes margin
-      const containerWidth = document.querySelector('.carousel-container').getBoundingClientRect().width;
-      const offset = -currentIndex * itemWidth + containerWidth / 2 - itemWidth / 2;
-      track.style.transform = `translateX(${offset}px)`;
-    }
-    
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
-      updateCarousel();
-    });
-    
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
-      updateCarousel();
-    });
-    
-    // On hover, make the hovered item active
-    items.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        currentIndex = parseInt(item.getAttribute('data-index'));
-        updateCarousel();
+      carousel.addEventListener('mouseleave', () => {
+        clearInterval(intervalId);
       });
-    });
-    
-    // Initialize carousel position
-    updateCarousel();
+    })();
   </script>
 </body>
 </html>
