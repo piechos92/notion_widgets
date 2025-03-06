@@ -2,370 +2,412 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Execution Mastery with Matt</title>
-  <!-- Google Fonts for Montserrat (for headings) -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Color Palette */
-    :root {
-      --primary-orange: #F97316;
-      --secondary-green: #16A34A;
-      --light-gray: #E5E7EB;
-      --dark-blue: #1E3A8A;
-      --dark-bg: #191919;
-    }
-
-    /* Global Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
+    /* Global Styles using .site class instead of body */
+    .site {
+      background: #191919;
+      color: #E5E7EB;
       font-family: Calibri, sans-serif;
       line-height: 1.6;
-      color: var(--dark-bg);
     }
-    h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
+
+    /* Global Containers */
+    .hero-container,
+    .benefits-container,
+    .demo-container,
+    .pricing-container,
+    .social-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 15px;
     }
-    .accent, .branding {
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      background: #191919;
+    }
+    .hero-container {
+      text-align: left;
+    }
+    .hero-title {
+      margin-bottom: 10px;
+    }
+    .hero-execution {
       font-family: Bahnschrift, sans-serif;
+      font-size: 3rem;
+      color: #F97316;
+      display: block;
     }
-    .cta {
+    .hero-mastery {
+      font-family: Bahnschrift, sans-serif;
+      font-size: 2.5rem;
+      color: #F97316;
+    }
+    .hero-with {
+      font-family: Calibri, sans-serif;
+      font-size: 2rem;
+      color: #E5E7EB;
+    }
+    .hero-tagline {
+      font-family: Montserrat, sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .accent-text {
+      font-family: Bahnschrift, sans-serif;
+      color: #F97316;
+    }
+    .hero-description {
+      font-family: Calibri, sans-serif;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #1E3A8A;
+      color: #fff;
+      padding: 12px 25px;
+      text-decoration: none;
       font-family: "Century Gothic", sans-serif;
       font-weight: bold;
-      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background 0.3s;
     }
-    
-    /* Container */
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 0;
+    .cta-button:hover {
+      background: #1a327a;
     }
-    
-    /* Hero Section */
-    header.hero {
-      text-align: center;
-      padding: 60px 20px;
+
+    /* Benefits Section */
+    .benefits {
+      padding: 60px 0;
+      background: #191919;
     }
-    header.hero h1 {
-      font-size: 2.5rem;
-      font-family: Bahnschrift, sans-serif;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    header.hero p.tagline {
-      font-size: 1.25rem;
-      margin: 10px 0;
-      color: var(--dark-blue);
-    }
-    header.hero p.description {
-      font-size: 1rem;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-    header.hero .cta-btn {
-      background-color: var(--primary-orange);
-      border: none;
-      color: #fff;
-      padding: 15px 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-    header.hero .cta-btn:hover {
-      background-color: #e0660e;
-    }
-    
-    /* Key Benefits Carousel Section */
-    section.benefits {
-      padding: 40px 0;
-      background: #fff;
-    }
-    section.benefits h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .carousel {
+    .carousel-container {
       overflow: hidden;
-      position: relative;
-      margin: auto;
-      max-width: 1000px;
-      border: 1px solid var(--light-gray);
-      border-radius: 5px;
-      padding: 20px;
+      /* Optional: set a fixed height if needed */
     }
-    .carousel-inner {
+    .benefits-carousel {
       display: flex;
-      transition: transform 0.5s ease;
+      transition: transform 0.3s ease-out;
     }
-    .carousel-item {
-      min-width: 250px;
-      flex: 0 0 250px;
+    .benefit-item {
+      flex: 0 0 300px;
       margin-right: 20px;
-      background: var(--light-gray);
-      border-radius: 5px;
-      padding: 15px;
-      text-align: center;
+      background: #191919;
+      padding: 20px;
+      border-radius: 4px;
     }
-    .carousel-item h3 {
-      font-size: 1.1rem;
+    .benefit-title {
+      font-family: Bahnschrift, sans-serif;
+      font-size: 1.4rem;
       margin-bottom: 10px;
+      color: #F97316;
     }
-    .carousel-item p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    
-    /* Visual Demonstration Section */
-    section.visual {
-      background: var(--light-gray);
-      padding: 60px 20px;
-      text-align: center;
-    }
-    section.visual h2 {
-      margin-bottom: 10px;
-    }
-    section.visual p {
-      margin-bottom: 30px;
+    .benefit-description {
+      font-family: Calibri Light, sans-serif;
       font-size: 1rem;
-      color: var(--dark-blue);
+      color: #E5E7EB;
     }
-    .video-container {
-      max-width: 800px;
-      margin: auto;
+    .benefit-item.bonus {
+      border: 2px solid #16A34A;
     }
-    .video-container iframe,
-    .video-container video {
-      width: 100%;
-      border-radius: 5px;
+
+    /* Visual Demonstration Section */
+    .demo {
+      padding: 60px 0;
+      background: #191919;
     }
-    
+    .demo-heading {
+      font-family: Montserrat, sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #E5E7EB;
+    }
+    .demo-subtext {
+      font-family: Calibri, sans-serif;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .demo-video .video-placeholder {
+      background: #ccc;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #191919;
+      border-radius: 4px;
+    }
+
     /* Pricing Section */
-    section.pricing {
-      padding: 60px 20px;
+    .pricing {
+      padding: 60px 0;
+      background: #191919;
+    }
+    .pricing-heading {
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #E5E7EB;
+    }
+    .pricing-plans {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .pricing-plan {
+      flex: 1 1 280px;
+      background: #191919;
+      padding: 30px;
+      border-radius: 4px;
       text-align: center;
     }
-    section.pricing h2 {
-      margin-bottom: 40px;
+    .pricing-plan.recommended {
+      border: 3px solid #16A34A;
     }
-    .pricing-cards {
+    .plan-title {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: #E5E7EB;
+    }
+    .plan-price {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #E5E7EB;
+    }
+    .plan-description {
+      margin-bottom: 20px;
+      font-family: Calibri Light, sans-serif;
+    }
+    .plan-button {
+      display: inline-block;
+      background: #1E3A8A;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-family: "Century Gothic", sans-serif;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .plan-button:hover {
+      background: #1a327a;
+    }
+
+    /* Social Section */
+    .social {
+      padding: 60px 0;
+      background: #191919;
+      color: #E5E7EB;
+    }
+    .social-heading {
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .social-links {
+      list-style: none;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
-    .pricing-card {
-      border: 1px solid var(--light-gray);
-      border-radius: 5px;
-      padding: 20px;
-      width: 280px;
-      transition: transform 0.3s ease;
-    }
-    .pricing-card:hover {
-      transform: scale(1.03);
-    }
-    .pricing-card.recommended {
-      border: 2px solid var(--secondary-green);
-    }
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-    .pricing-card p.price {
-      font-size: 2rem;
-      margin: 20px 0;
-    }
-    .pricing-card ul {
-      list-style: none;
-      margin: 15px 0;
-      padding: 0;
-    }
-    .pricing-card ul li {
-      margin: 8px 0;
-      font-size: 0.9rem;
-    }
-    .pricing-card .plan-btn {
-      background-color: var(--primary-orange);
-      border: none;
-      padding: 10px 20px;
-      font-family: "Century Gothic", sans-serif;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    .pricing-card .plan-btn:hover {
-      background-color: #e0660e;
-    }
-    
-    /* Social Proof / Engagement Section */
-    section.social {
-      background: var(--dark-bg);
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    section.social h2 {
-      margin-bottom: 20px;
-    }
-    .social-links a {
-      color: #fff;
-      margin: 0 10px;
+    .social-link {
+      color: #E5E7EB;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.3s ease;
+      font-family: Calibri, sans-serif;
+      transition: color 0.3s;
     }
-    .social-links a:hover {
-      color: var(--primary-orange);
+    .social-link:hover {
+      color: #1E3A8A;
     }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .carousel-inner {
-        flex-wrap: nowrap;
+
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .hero-execution {
+        font-size: 2.5rem;
       }
-      .pricing-cards {
+      .hero-mastery {
+        font-size: 2rem;
+      }
+      .hero-with {
+        font-size: 1.8rem;
+      }
+      .benefits-carousel {
+        gap: 10px;
+      }
+      .benefit-item {
+        flex: 0 0 260px;
+      }
+      .pricing-plans {
         flex-direction: column;
         align-items: center;
+      }
+    }
+    @media (max-width: 767px) {
+      .hero {
+        padding: 40px 0;
+      }
+      .demo-video .video-placeholder {
+        height: 250px;
+      }
+      .pricing-plan {
+        padding: 20px;
+      }
+    }
+    @media (max-width: 479px) {
+      .hero-execution {
+        font-size: 2rem;
+      }
+      .hero-mastery {
+        font-size: 1.8rem;
+      }
+      .hero-with {
+        font-size: 1.5rem;
+      }
+      .cta-button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+      .benefit-item {
+        flex: 0 0 220px;
+        padding: 15px;
+      }
+      .demo-heading,
+      .pricing-heading,
+      .social-heading {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero container">
-    <h1 class="branding">EXECUTION MASTERY WITH MATT</h1>
-    <p class="tagline">Stay Ahead. Learn Smarter. Better.</p>
-    <p class="description">Break information overload. Absorb, retain, and apply knowledge effortlessly with our cutting-edge AI-powered system.</p>
-    <button class="cta-btn cta">Get the System</button>
-  </header>
-  
-  <!-- Key Benefits Section -->
-  <section class="benefits container">
-    <h2>Key Benefits</h2>
-    <div class="carousel" id="benefits-carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item">
-          <!-- Icon or graphic can be inserted here -->
-          <h3>Smart Focus, Maximum Clarity</h3>
-          <p>Stay organized and absorb only what truly matters.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>Organized Data, Zero Clutter</h3>
-          <p>Keep everything you need to know in one structured place.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>Effective Notes, Better Retention</h3>
-          <p>Take smart notes and remember more easily than ever.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>Learning On the Go, Effortlessly</h3>
-          <p>Remain active and stay informed. Learn whenever and wherever you want. All you need is your phone and headphones.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>Quick Summaries, Easy Explanations</h3>
-          <p>Use a personal AI agent who summarizes key insights in seconds and explains them in simple language – just like you’re a kid.</p>
+  <div class="site">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <h1 class="hero-title">
+          <span class="hero-execution">EXECUTION</span><br>
+          <span class="hero-mastery">MASTERY</span>
+          <span class="hero-with"> WITH MATT</span>
+        </h1>
+        <p class="hero-tagline">Stay Ahead. Learn Smarter. <span class="accent-text">Better</span>.</p>
+        <p class="hero-description">
+          Break information overload. Absorb, retain, and apply knowledge effortlessly with our cutting-edge AI-powered system.
+        </p>
+        <a href="#pricing" class="cta-button">Get the System</a>
+      </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section class="benefits">
+      <div class="benefits-container">
+        <div class="carousel-container">
+          <div class="benefits-carousel">
+            <div class="benefit-item">
+              <h2 class="benefit-title">Smart Focus, Maximum Clarity</h2>
+              <p class="benefit-description">Stay organized and absorb only what truly matters.</p>
+            </div>
+            <div class="benefit-item">
+              <h2 class="benefit-title">Organized Data, Zero Clutter</h2>
+              <p class="benefit-description">Keep everything you need to know in one structured place.</p>
+            </div>
+            <div class="benefit-item">
+              <h2 class="benefit-title">Effective Notes, Better Retention</h2>
+              <p class="benefit-description">Take smart notes and remember more easily than ever.</p>
+            </div>
+            <div class="benefit-item">
+              <h2 class="benefit-title">Learning On the Go, Effortlessly</h2>
+              <p class="benefit-description">
+                Remain active and stay informed. Learn whenever and wherever you want. All you need is your phone and headphones.
+              </p>
+            </div>
+            <div class="benefit-item bonus">
+              <h2 class="benefit-title">Quick Summaries, Easy Explanations</h2>
+              <p class="benefit-description">
+                Use a personal AI agent who summarizes key insights in seconds and explains them in simple, easy-to-understand language – just like you’re a kid.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Visual Demonstration Section -->
-  <section class="visual">
-    <div class="container">
-      <h2>SEE IT IN ACTION</h2>
-      <p>From Idea to Reality: Discover The Vision that started it all.</p>
-      <div class="video-container">
-        <!-- Replace the src with your video or interactive preview -->
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                title="Video demonstration" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <!-- Visual Demonstration Section -->
+    <section class="demo">
+      <div class="demo-container">
+        <h2 class="demo-heading">SEE IT IN ACTION</h2>
+        <p class="demo-subtext">From Idea to Reality: Discover The Vision that started it all.</p>
+        <div class="demo-video">
+          <!-- Replace with actual video/interactive content as needed -->
+          <div class="video-placeholder">Video Placeholder</div>
+        </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Pricing Section -->
-  <section class="pricing container">
-    <h2>Choose Your Plan</h2>
-    <div class="pricing-cards">
-      <div class="pricing-card">
-        <h3>Basic</h3>
-        <p class="price">$9/mo</p>
-        <ul>
-          <li>Access to core features</li>
-          <li>Standard support</li>
-          <li>Community access</li>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+      <div class="pricing-container">
+        <h2 class="pricing-heading">Choose Your Plan</h2>
+        <div class="pricing-plans">
+          <div class="pricing-plan">
+            <h3 class="plan-title">Basic</h3>
+            <p class="plan-price">$9.99/month</p>
+            <p class="plan-description">Essential features for personal use.</p>
+            <a href="#" class="plan-button">Select</a>
+          </div>
+          <div class="pricing-plan recommended">
+            <h3 class="plan-title">Pro</h3>
+            <p class="plan-price">$19.99/month</p>
+            <p class="plan-description">Advanced features for professionals.</p>
+            <a href="#" class="plan-button">Select</a>
+          </div>
+          <div class="pricing-plan">
+            <h3 class="plan-title">Enterprise</h3>
+            <p class="plan-price">Contact Us</p>
+            <p class="plan-description">Custom solutions for large organizations.</p>
+            <a href="#" class="plan-button">Select</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof / Engagement Section -->
+    <section class="social">
+      <div class="social-container">
+        <h2 class="social-heading">Follow for More Insights</h2>
+        <ul class="social-links">
+          <li class="social-item"><a href="#" class="social-link">Facebook</a></li>
+          <li class="social-item"><a href="#" class="social-link">Twitter</a></li>
+          <li class="social-item"><a href="#" class="social-link">LinkedIn</a></li>
+          <li class="social-item"><a href="#" class="social-link">Instagram</a></li>
         </ul>
-        <button class="plan-btn">Select Plan</button>
       </div>
-      <div class="pricing-card recommended">
-        <h3>Pro</h3>
-        <p class="price">$19/mo</p>
-        <ul>
-          <li>Everything in Basic</li>
-          <li>Advanced analytics</li>
-          <li>Priority support</li>
-        </ul>
-        <button class="plan-btn">Select Plan</button>
-      </div>
-      <div class="pricing-card">
-        <h3>Premium</h3>
-        <p class="price">$29/mo</p>
-        <ul>
-          <li>Everything in Pro</li>
-          <li>Exclusive webinars</li>
-          <li>1-on-1 coaching</li>
-        </ul>
-        <button class="plan-btn">Select Plan</button>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Social Proof / Engagement Section -->
-  <section class="social">
-    <div class="container">
-      <h2>Follow for More Insights</h2>
-      <div class="social-links">
-        <a href="#" target="_blank">Facebook</a>
-        <a href="#" target="_blank">Twitter</a>
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- JavaScript for Benefits Carousel -->
+    </section>
+  </div>
+
+  <!-- JavaScript for Interactive Carousel -->
   <script>
     (function() {
-      const carousel = document.getElementById('benefits-carousel');
-      const inner = carousel.querySelector('.carousel-inner');
-      const items = carousel.querySelectorAll('.carousel-item');
-      const itemWidth = items[0].offsetWidth + 20; // item width plus margin-right
-      const totalItems = items.length;
-      let currentIndex = 0;
-      let intervalId;
-
-      // Move to next slide (with wrap-around)
-      function nextSlide() {
-        currentIndex++;
-        if(currentIndex > totalItems - Math.floor(carousel.offsetWidth / itemWidth)) {
-          currentIndex = 0;
-        }
-        inner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      const carouselContainer = document.querySelector('.carousel-container');
+      const carousel = document.querySelector('.benefits-carousel');
+      function updateCarousel(e) {
+        const rect = carouselContainer.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left; // Mouse X relative to container
+        const containerWidth = rect.width;
+        const maxScroll = carousel.scrollWidth - containerWidth;
+        const percentage = mouseX / containerWidth;
+        const offset = maxScroll * percentage;
+        carousel.style.transform = 'translateX(-' + offset + 'px)';
       }
-
-      carousel.addEventListener('mouseenter', () => {
-        intervalId = setInterval(nextSlide, 2000);
-      });
-      carousel.addEventListener('mouseleave', () => {
-        clearInterval(intervalId);
-      });
+      carouselContainer.addEventListener('mousemove', updateCarousel);
     })();
   </script>
 </body>
