@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Knowledge System Custom GPT Setup</title>
+    <title>Setup Your Knowledge System Custom GPT</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,13 +20,38 @@
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            padding: 20px;
         }
-        h1 {
+        h1, h2 {
             color: #333333;
         }
         p {
             color: #555555;
             font-size: 16px;
+        }
+        .code-box {
+            background: #f7f7f7;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            font-family: monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            position: relative;
+            text-align: left;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
         }
         .button {
             display: inline-block;
@@ -39,29 +64,59 @@
             font-weight: bold;
             margin-top: 20px;
         }
-        .footer {
-            font-size: 14px;
-            color: #777777;
-            margin-top: 20px;
-        }
     </style>
+    <script>
+        // Function to get API key from URL parameters
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Auto-fill the API key field from URL param
+        window.onload = function() {
+            let apiKey = getQueryParam("api_key");
+            if (apiKey) {
+                document.getElementById("api-key").textContent = apiKey;
+            }
+        };
+
+        // Function to copy text to clipboard
+        function copyToClipboard(elementId) {
+            let text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard!");
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Set Up Your Custom GPT</h1>
-        <p>Hi <strong>{{ $('Set variables').first().json.Name }}</strong>,</p>
-        <p>Your Knowledge System Custom GPT is ready! Click below to access your setup instructions.</p>
+        <h1>🚀 Setup Your Custom GPT</h1>
+        <p>Follow the steps below to configure your AI assistant.</p>
 
-        <a href="https://yourdomain.com/setup.html?api_key={{ $('Generate API key').item.json.apiKey }}" class="button">
-            Open Setup Instructions
-        </a>
+        <h2>🎥 Setup Tutorial</h2>
+        <p>Watch this step-by-step guide to configure your GPT:</p>
+        <a href="https://yourdomain.com/tutorial-video" class="button">Watch Video Tutorial</a>
 
-        <p>If you have any questions, feel free to reach out.</p>
+        <h2>🔑 Your API Key</h2>
+        <div class="code-box" id="api-key">Loading...</div>
+        <button class="copy-btn" onclick="copyToClipboard('api-key')">Copy</button>
 
-        <div class="footer">
-            <p>Best regards,<br>
-            <strong>Matt</strong></p>
+        <h2>📜 Your Custom GPT Prompt</h2>
+        <div class="code-box" id="gpt-prompt">
+            {{ $json.Prompt }}
         </div>
+        <button class="copy-btn" onclick="copyToClipboard('gpt-prompt')">Copy</button>
+
+        <h2>📘 OpenAPI Specification</h2>
+        <div class="code-box" id="openapi-spec">
+            {{ $json['OpenAPI specification'] }}
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('openapi-spec')">Copy</button>
+
+        <p>Once everything is set up, you can start using your AI assistant. 🚀</p>
+
+        <p>Need help? Contact support at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a></p>
     </div>
 </body>
 </html>
