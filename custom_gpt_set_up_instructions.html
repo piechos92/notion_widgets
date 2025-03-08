@@ -30,6 +30,11 @@
       font-size: 16px;
       margin: 0.5em 0;
     }
+    /* 
+       IMPORTANT:
+       Adding white-space: pre-wrap; word-wrap: break-word; overflow-x: auto;
+       ensures the text in code boxes retains its line breaks.
+    */
     .code-box {
       position: relative;
       background: #f7f7f7;
@@ -40,6 +45,9 @@
       margin: 0.5em 0;
       border-radius: 5px;
       text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-x: auto;
     }
     .copy-btn {
       position: absolute;
