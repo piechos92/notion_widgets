@@ -30,15 +30,14 @@
       font-size: 16px;
       margin: 0.5em 0;
     }
-    /* Code-box styling with minimal padding/margin */
     .code-box {
       position: relative;
       background: #f7f7f7;
       border-left: 4px solid #007bff;
       font-family: monospace;
       font-size: 14px;
-      padding: 6px 10px; /* Minimal padding */
-      margin: 0.5em 0;   /* Minimal margin */
+      padding: 6px 10px;
+      margin: 0.5em 0;
       border-radius: 5px;
       text-align: left;
     }
@@ -57,7 +56,6 @@
     .video-container {
       margin-top: 1em;
     }
-    /* Toast notification styling */
     .toast {
       position: fixed;
       bottom: 20px;
@@ -93,7 +91,6 @@
       toast.innerText = 'Copied to clipboard!';
       document.body.appendChild(toast);
 
-      // Remove after 2 seconds
       setTimeout(() => {
         document.body.removeChild(toast);
       }, 2000);
@@ -206,9 +203,6 @@
   1. Provide a short description of what the content is about.
   2. Summarize it in 2-3 sentences.
   3. Say, “The content contains a few sections,” then list each section with a number, briefly describing its content in one sentence per section.
-     - **Section 1**: Talks about [topic A] and [topic B].
-     - **Section 2**: Covers [topic C] and its implications.
-     - **Section 3**: Explains [topic D] and provides examples.
   4. Do not provide timestamps for videos.
   5. Ask if the user wants more details on any specific section or a more in-depth summary of the whole content.
 
